@@ -51,14 +51,14 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: "<%= title %>",
-      template: "./src/index.html",
-      favicon: "./src/favicon.ico",
+      title: "<%= projectTitle %>",
+      template: "./public/index.html",
+      favicon: "./public/favicon.ico",
       meta: {
         viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
       }
     }),
-    new CopyWebpackPlugin([{ from: "./src/manifest.json" }]),
+    new CopyWebpackPlugin([{ from: "./public/manifest.json" }]),
     new MiniCssExtractPlugin({
       filename:
         process.env.NODE_ENV === "development"

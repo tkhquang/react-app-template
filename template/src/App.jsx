@@ -4,7 +4,7 @@ import "styles/index.css";
 
 const App = () => {
   return (
-    <div className="pb-10">
+    <div className="flex justify-center items-center h-screen">
       React Template
     </div>
   );

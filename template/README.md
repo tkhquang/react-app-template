@@ -1,4 +1,4 @@
-# <%= name %>
+# <%= projectTitle %>
 
 ## How to use
 

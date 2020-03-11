@@ -2,26 +2,32 @@ module.exports = {
   prompts() {
     return [
       {
-        name: 'name',
-        message: 'What is the name of the new project',
+        name: 'projectName',
+        message: 'What is the name of the new project?',
         default: this.outFolder,
         filter: val => val.toLowerCase()
       },
       {
-        name: 'title',
-        message: 'What is the title of the new app',
+        name: 'projectTitle',
+        message: 'What is the title of the new project?',
         default: this.outFolder,
       },
       {
-        name: 'description',
-        message: 'How would you descripe the new project',
+        name: 'projectDescription',
+        message: 'How would you describe the new project?',
         default: this.outFolder
       },
       {
         name: 'username',
-        message: 'What is your GitHub username',
+        message: 'What is your GitHub username?',
         default: this.gitUser.name,
         filter: val => val.toLowerCase(),
+        store: true
+      },
+      {
+        name: 'displayname',
+        message: 'What is your GitHub display name?',
+        default: this.gitUser.username,
         store: true
       },
       {

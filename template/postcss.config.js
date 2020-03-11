@@ -3,17 +3,17 @@ const glob = require("glob-all");
 const autoprefixer = require("autoprefixer");
 const postcssImport = require("postcss-import");
 
+const TailwindExtractor = content => {
+  return content.match(/[\w-/:]+(?<!:)/g) || [];
+};
+
 const purgecss = require("@fullhuman/postcss-purgecss")({
-  content: ["src/index.html", "src/**/*.js"],
+  content: ["public/index.html", "src/**/*.js", "src/**/*.jsx"],
   css: ["src/styles/*.css"],
   extractors: [
     {
-      extractor: class TailwindExtractor {
-        static extract(content) {
-          return content.match(/[\w-/:]+(?<!:)/g) || [];
-        }
-      },
-      extensions: ["css", "html", "js"]
+      extractor: TailwindExtractor,
+      extensions: ["css", "html", "js", "jsx"]
     }
   ],
   whitelist: ["html", "body"]
@@ -22,7 +22,7 @@ const purgecss = require("@fullhuman/postcss-purgecss")({
 module.exports = ctx => {
   return {
     // Specify the locations of any files you want to scan for class names.
-    paths: glob.sync(["src/**/*.js"]),
+    paths: glob.sync(["src/**/*.js", "src/**/*.jsx"]),
     syntax: "postcss-scss",
     parser: "postcss-scss",
     plugins: [

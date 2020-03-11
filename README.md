@@ -18,5 +18,5 @@ npm i -g sao
 Then execute the following command to create your web application
 
 ```sh
-sao tkhquang/react-app-template my-project
+sao tkhquang/react-app-template -u my-project
 ```
