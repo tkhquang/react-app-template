@@ -1,0 +1,22 @@
+{
+  "name": "react-app-template",
+  "version": "0.0.0",
+  "description": "Project template for creating React apps",
+  "repository": {
+    "url": "tkhquang/react-app-template",
+    "type": "git"
+  },
+  "author": "Quang Trinh <khacquang.trinh@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "saofile.js",
+    "template"
+  ],
+  "scripts": {
+    "test": "ava"
+  },
+  "devDependencies": {
+    "ava": "^3.5.0",
+    "sao": "^1.7.0"
+  }
+}
