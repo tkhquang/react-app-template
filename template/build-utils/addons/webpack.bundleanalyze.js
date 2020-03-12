@@ -6,7 +6,12 @@ module.exports = {
     new WebpackBundleAnalyzer({
       analyzerMode: "static",
       reportFilename: "./report.html",
-      openAnalyzer: false
+      generateStatsFile: true,
+      statsOptions: {
+        source: false
+      },
+      statsFilename: "./stats.json",
+      openAnalyzer: true
     })
   ]
 };
