@@ -1,10 +1,16 @@
 FROM node:alpine as builder
-WORKDIR /app
-COPY package.json .
+
+RUN mkdir -p tmp
+WORKDIR /tmp
+
+COPY package.json ./
 RUN yarn
-COPY . . 
+
+COPY . /tmp/
 RUN yarn build
 
-FROM nginx
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /tmp/dist /var/www
 EXPOSE 80
-COPY --from=builder /app/dist /usr/share/nginx/html
+ENTRYPOINT ["nginx","-g","daemon off;"]

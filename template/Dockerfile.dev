@@ -1,10 +1,14 @@
 FROM node:alpine
 
-WORKDIR /app
+RUN mkdir -p /usr/src/app
 
-COPY package.json yarn.lock ./
+WORKDIR /usr/src/app
+
+COPY package.json ./
 RUN yarn
 
-COPY ./ ./
+COPY . /usr/src/app
+
+EXPOSE 8080
 
 CMD ["yarn", "dev"]
