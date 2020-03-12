@@ -1,3 +1,4 @@
+const path = require("path");
 const webpack = require("webpack");
 const Dotenv = require("dotenv-webpack");
 
@@ -12,7 +13,9 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: "./dist",
+    contentBase: path.resolve(__dirname, "../", "dist"),
+    compress: true,
+    port: 8080,
     hot: true
   }
 };

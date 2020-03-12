@@ -9,7 +9,6 @@
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/<%= username %>/<%= projectName %>.git"

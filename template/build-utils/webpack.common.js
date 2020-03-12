@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: path.resolve(__dirname, "../", "src", "index.js"),
   devtool: "inline-source-map",
   module: {
     rules: [
@@ -44,7 +44,7 @@ module.exports = {
     modules: ["node_modules", path.resolve(__dirname, "../", "src")],
     alias: {
       src: path.resolve(__dirname, "../", "src"),
-      "@utils": path.resolve(__dirname, "../", "src/utils")
+      "@utils": path.resolve(__dirname, "../", "src", "utils")
     },
     extensions: ["*", ".js", ".jsx", ".json"]
   },
@@ -52,13 +52,15 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: "<%= projectTitle %>",
-      template: "./public/index.html",
-      favicon: "./public/favicon.ico",
+      template: path.resolve(__dirname, "../", "public", "index.html"),
+      favicon: path.resolve(__dirname, "../", "public", "favicon.ico"),
       meta: {
         viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
       }
     }),
-    new CopyWebpackPlugin([{ from: "./public/manifest.json" }]),
+    new CopyWebpackPlugin([
+      { from: path.resolve(__dirname, "../", "public"), to: "./" }
+    ]),
     new MiniCssExtractPlugin({
       filename:
         process.env.NODE_ENV === "development"
